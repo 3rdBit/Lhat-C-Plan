@@ -386,7 +386,7 @@ void ChatApplication::onStatusClicked(QTreeWidgetItem* item)
                 {
                     string room = QInputDialog::getText(this, "Lhat - 加入聊天室……",
                                         "请输入你要加入的聊天室名称：").toStdString();
-                    onSend("//room join " + room);
+                    if (!room.empty()) onSend("//room join " + room);
                 });
             connect(action_leave, &QAction::triggered, this, [=]
                 {
@@ -433,7 +433,7 @@ void ChatApplication::onStatusClicked(QTreeWidgetItem* item)
                 {
                     string victim = QInputDialog::getText(this, "Lhat - 将……解封",
                                         "请输入你要解封的用户名：").toStdString();
-                    onSend("//user restore " + victim);
+                    if (!victim.empty()) onSend("//user restore " + victim);
                 });
             connect(action_admin, &QAction::triggered, this, [=]
                 {
